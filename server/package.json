@@ -1,0 +1,40 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon",
+    "seed_local": "DB_URL=mongodb://host.docker.internal:27017/rilquick node ./src/utils/seed/index.js",
+    "seed": "DB_URL=mongodb://riladmin:system122333@172.17.0.1:27017/rilquick?authSource=admin node ./src/utils/seed/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rilquick/server.git"
+  },
+  "author": "John Cyruss Morales",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rilquick/server/issues"
+  },
+  "homepage": "https://github.com/rilquick/server#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "helmet": "^6.0.1",
+    "jsonwebtoken": "^9.0.0",
+    "moment": "^2.29.4",
+    "mongoose": "^6.8.0",
+    "validator": "^13.7.0",
+    "winston": "^3.8.2",
+    "winston-daily-rotate-file": "^4.7.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.20"
+  }
+}

@@ -1,0 +1,39 @@
+version: '3.8'
+
+volumes:
+  server_nm:
+    driver: local
+  mongodb-data:
+    driver: local
+
+services:
+  mongo:
+    image: mongo
+    container_name: mongo_db
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: riladmin
+      MONGO_INITDB_ROOT_PASSWORD: system122333
+    ports:
+      - "27017:27017"
+    networks:
+      - my-network
+    volumes:
+      - mongodb-data:/data/db
+
+  server:
+    build: ./server/
+    container_name: rq_server
+    ports:
+      - '3009:3009'
+    volumes:
+      - './server:/app'
+      - 'server_nm:/app/node_modules'
+      - './server/.env:/app/.env'
+    networks:
+      - my-network
+    command: ['sh', '-c', 'npm run dev']
+
+networks:
+  my-network:
+    driver: bridge
